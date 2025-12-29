@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="FareNexDriverApp.Views.BasePages.BasePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:viewModels="clr-namespace:FareNexDriverApp.Core.ViewModels.BaseViewModels;assembly=FareNexDriverApp.Core"
+    x:DataType="viewModels:BaseViewModel"
+    x:Name="basePage"
+    BackgroundColor="{StaticResource PageBGColor}">
+    
+    <ContentPage.Behaviors
+        <toolkit:EventToCommandBehavior
+            BindingContext="{Binding Path=BindingContext, Source={x:Reference basePage} , x:DataType=ContentPage}"
+            Command="{Binding AppearingCommand}"
+            EventName="Appearing"/>
+
+        <toolkit:EventToCommandBehavior
+             BindingContext="{Binding Path=BindingContext, Source={x:Reference basePage} , x:DataType=ContentPage}"
+             Command="{Binding DisappearingCommand}"
+             EventName="Disappearing"/>
+
+        <toolkit:EventToCommandBehavior
+             BindingContext="{Binding Path=BindingContext, Source={x:Reference basePage} , x:DataType=ContentPage}"
+             Command="{Binding PageUnloadedCommand}"
+             EventName="Unloaded"/> 
+
+    </ContentPage.Behaviors>
+    
+    <ContentPage.Resources>
+
+        <ResourceDictionary>
+            <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+</ContentPage>

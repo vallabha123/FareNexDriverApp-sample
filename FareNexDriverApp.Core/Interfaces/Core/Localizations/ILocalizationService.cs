@@ -1,0 +1,1 @@
+namespace FareNexDriverApp.Core.Interfaces.Core; public interface ILocalizationService{ string GetLocalizedValue(string k); }

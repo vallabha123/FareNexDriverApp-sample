@@ -1,0 +1,42 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FareNexDriverApp", "FareNexDriverApp\FareNexDriverApp.csproj", "{DAEAF126-9ED1-42BE-84F2-3EF2CB43E7A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FareNexDriverApp.Core", "FareNexDriverApp.Core\FareNexDriverApp.Core.csproj", "{963C00BB-5FC5-47D9-AB65-9B03D175B59C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FareNexDriverApp.Rest", "FareNexDriverApp.Rest\FareNexDriverApp.Rest.csproj", "{4EEE29FD-7533-4488-BEB9-E8DBA05DB35F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FareNexDriverApp.IOC", "FareNexDriverApp.IOC\FareNexDriverApp.IOC.csproj", "{9E9996AC-D648-4585-AB26-00451C46A234}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DAEAF126-9ED1-42BE-84F2-3EF2CB43E7A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAEAF126-9ED1-42BE-84F2-3EF2CB43E7A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAEAF126-9ED1-42BE-84F2-3EF2CB43E7A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAEAF126-9ED1-42BE-84F2-3EF2CB43E7A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{963C00BB-5FC5-47D9-AB65-9B03D175B59C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{963C00BB-5FC5-47D9-AB65-9B03D175B59C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{963C00BB-5FC5-47D9-AB65-9B03D175B59C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{963C00BB-5FC5-47D9-AB65-9B03D175B59C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EEE29FD-7533-4488-BEB9-E8DBA05DB35F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EEE29FD-7533-4488-BEB9-E8DBA05DB35F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EEE29FD-7533-4488-BEB9-E8DBA05DB35F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EEE29FD-7533-4488-BEB9-E8DBA05DB35F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E9996AC-D648-4585-AB26-00451C46A234}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E9996AC-D648-4585-AB26-00451C46A234}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E9996AC-D648-4585-AB26-00451C46A234}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E9996AC-D648-4585-AB26-00451C46A234}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {82ED943A-9E73-49A2-92EC-61695BF30F6B}
+	EndGlobalSection
+EndGlobal

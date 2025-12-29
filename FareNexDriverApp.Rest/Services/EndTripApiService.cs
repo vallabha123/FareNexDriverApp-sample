@@ -1,0 +1,1 @@
+namespace FareNexDriverApp.Core.Interfaces.Rest; public interface IEndTripApiService{ }

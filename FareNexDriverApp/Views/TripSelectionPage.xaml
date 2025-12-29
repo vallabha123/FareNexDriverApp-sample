@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<pages:BasePage
+    x:Class="FareNexDriverApp.Views.TripSelectionPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pages="clr-namespace:FareNexDriverApp.Views.BasePages"
+    xmlns:resx="clr-namespace:FareNexDriverApp.Resources.Strings"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:viewModels="clr-namespace:FareNexDriverApp.Core.ViewModels;assembly=FareNexDriverApp.Core"
+    xmlns:views="clr-namespace:FareNexDriverApp.Views.CommonViews"
+    x:DataType="viewModels:TripSelectionPageViewModel"
+    BackgroundColor="{StaticResource PageBGColor}">
+
+    <Grid ColumnDefinitions="*" RowDefinitions="*">
+
+        <Grid
+            x:Name="TripSelection"
+            ColumnDefinitions="40*,Auto,60*"
+            IsVisible="{Binding IsTripSelectionPageVisible}"
+            RowDefinitions="*">
+
+            <Image
+                Grid.Column="0"
+                Aspect="AspectFit"
+                AutomationId="LogoImage"
+                HeightRequest="160"
+                HorizontalOptions="Center"
+                Source="express_shuttle_logo.png"
+                VerticalOptions="Center"
+                WidthRequest="260" />
+
+            <BoxView
+                Grid.Column="1"
+                BackgroundColor="{StaticResource FN_Silver}"
+                HeightRequest="540"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                WidthRequest="3" />
+
+            <Grid
+                Grid.Column="2"
+                Margin="0,130,0,0"
+                HorizontalOptions="Center"
+                RowDefinitions="80,Auto,102,Auto,Auto"
+                VerticalOptions="Start">
+
+                <Label
+                    Grid.Row="0"
+                    AutomationId="SelectBusLabel"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Start"
+                    Style="{StaticResource SemiBoldDarkGrayH4LabelStyle}"
+                    Text="{Binding DriverName, StringFormat='Welcome {0}'}" />
+
+                <!--  Route Picker  -->
+                <Label
+                    Grid.Row="1"
+                    Margin="3,0,0,6"
+                    AutomationId="SelectRouteLabel"
+                    HorizontalOptions="Start"
+                    Style="{StaticResource BoldGray450BodyLabelStyle}"
+                    Text="{x:Static resx:AppResources.SelectRoute}"
+                    VerticalOptions="Start" />
+
+                <Button
+                    x:Name="NextButton"
+                    Grid.Row="3"
+                    Margin="0,50,0,30"
+                    AutomationId="NextButton"
+                    Command="{Binding NextCommand}"
+                    Style="{StaticResource OkButtonStyle}"
+                    Text="{x:Static resx:AppResources.Next}"
+                    VerticalOptions="End"
+                    WidthRequest="450">
+                    <Button.Triggers>
+                        <DataTrigger
+                            Binding="{Binding RouteBindingContext.DropdownTitle}"
+                            TargetType="Button"
+                            Value="Select">
+                            <Setter Property="IsEnabled" Value="False" />
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
+
+                <Button
+                    Grid.Row="4"
+                    AutomationId="ReEnterPinButton"
+                    BackgroundColor="{StaticResource PageBGColor}"
+                    Command="{Binding PinChangeCommand}"
+                    Style="{StaticResource CancelButtonStyle}"
+                    Text="{x:Static resx:AppResources.LogOut}"
+                    VerticalOptions="End"
+                    WidthRequest="450" />
+
+                <views:DropDownPickerView
+                    x:Name="SelectRoutePicker"
+                    Grid.Row="2"
+                    Grid.RowSpan="3"
+                    BindingContext="{Binding RouteBindingContext}"
+                    IsVisible="{Binding IsDropDownVisible}"
+                    VerticalOptions="Start"
+                    WidthRequest="450" />
+
+            </Grid>
+
+        </Grid>
+
+        <!--  Change Selection Screen  -->
+
+        <Grid
+            x:Name="ChangeSelection"
+            Margin="65,30,65,0"
+            IsVisible="{Binding IsChangeSelectionPageVisible}"
+            RowDefinitions="Auto,*"
+            RowSpacing="10">
+
+            <Image
+                Grid.Row="0"
+                Aspect="AspectFit"
+                AutomationId="ExpressShuttleImage"
+                HeightRequest="100"
+                HorizontalOptions="Center"
+                Source="express_shuttle_logo.png"
+                VerticalOptions="Start"
+                WidthRequest="200" />
+
+            <Border
+                Grid.Row="1"
+                Margin="0,20,0,0"
+                BackgroundColor="White">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="30,30,0,0" />
+                </Border.StrokeShape>
+
+                <Grid
+                    Margin="90,80,90,0"
+                    ColumnDefinitions="*,*"
+                    RowDefinitions="Auto,Auto,Auto"
+                    RowSpacing="30">
+
+                    <Label
+                        Grid.Row="0"
+                        Grid.ColumnSpan="2"
+                        HorizontalOptions="Center"
+                        Style="{StaticResource SemiBoldDarkGrayH4LabelStyle}"
+                        Text="{x:Static resx:AppResources.ReviewConfirmDesc}" />
+
+                    <Border
+                        Grid.Row="1"
+                        Grid.ColumnSpan="2"
+                        HeightRequest="220"
+                        StrokeThickness="2">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="10" />
+                        </Border.StrokeShape>
+
+                        <!--  ColumnDefinitions="25*,Auto,50*,Auto,25*"  -->
+                        <Grid
+                            Margin="20"
+                            ColumnDefinitions="25*,Auto,75*"
+                            RowDefinitions="Auto,Auto,*">
+
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                FontAttributes="Bold"
+                                HorizontalOptions="Center"
+                                HorizontalTextAlignment="Center"
+                                Style="{StaticResource BoldGray450BodyLabelStyle}"
+                                Text="{x:Static resx:AppResources.BusNumber}"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center" />
+
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="2"
+                                HorizontalOptions="Center"
+                                HorizontalTextAlignment="Center"
+                                Style="{StaticResource BoldGray450BodyLabelStyle}"
+                                Text="{x:Static resx:AppResources.Route}"
+                                VerticalOptions="Center" />
+
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="3"
+                                Grid.ColumnSpan="2"
+                                HorizontalOptions="Center"
+                                HorizontalTextAlignment="Center"
+                                IsVisible="False"
+                                Style="{StaticResource BoldGray450BodyLabelStyle}"
+                                Text="{x:Static resx:AppResources.StartMiles}"
+                                VerticalOptions="Center" />
+
+                            <BoxView
+                                Grid.Row="1"
+                                Grid.ColumnSpan="5"
+                                Margin="0,10"
+                                HeightRequest="2"
+                                Style="{StaticResource BoxView}" />
+
+                            <Label
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                HorizontalOptions="Center"
+                                HorizontalTextAlignment="Center"
+                                Style="{StaticResource BoldRedH3LabelStyle}"
+                                Text="{Binding BusNumber}"
+                                VerticalTextAlignment="Center" />
+
+                            <BoxView
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                HeightRequest="100"
+                                Style="{StaticResource BoxView}"
+                                WidthRequest="3" />
+
+                            <Label
+                                Grid.Row="2"
+                                Grid.Column="2"
+                                Margin="20,0"
+                                HorizontalOptions="Center"
+                                HorizontalTextAlignment="Center"
+                                Style="{StaticResource MediumRedH6LabelStyle}"
+                                Text="{Binding RouteSelectedValue}"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center" />
+
+                            <BoxView
+                                Grid.Row="2"
+                                Grid.Column="3"
+                                HeightRequest="100"
+                                IsVisible="False"
+                                Style="{StaticResource BoxView}"
+                                WidthRequest="3" />
+
+                            <Label
+                                Grid.Row="2"
+                                Grid.Column="4"
+                                HorizontalOptions="Center"
+                                HorizontalTextAlignment="Center"
+                                IsVisible="False"
+                                Style="{StaticResource BoldRedH3LabelStyle}"
+                                Text="{Binding StartMiles}"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center" />
+
+                        </Grid>
+                    </Border>
+
+                    <Button
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Command="{Binding ChangeRouteCommand}"
+                        HorizontalOptions="Start"
+                        Style="{StaticResource CancelButtonStyle}"
+                        Text="{x:Static resx:AppResources.ChangeRoute}"
+                        VerticalOptions="End" />
+
+                    <views:AnimationButton
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        HorizontalOptions="End"
+                        VerticalOptions="End" />
+                </Grid>
+            </Border>
+        </Grid>
+
+        <views:InternetView ZIndex="2" />
+
+    </Grid>
+
+</pages:BasePage>

@@ -1,0 +1,1 @@
+namespace FareNexDriverApp.Core.Interfaces.Core; public interface IAppConfigurationsService{ }

@@ -1,0 +1,4 @@
+<Project Sdk="Microsoft.NET.Sdk"><PropertyGroup><TargetFramework>net9.0</TargetFramework></PropertyGroup><ItemGroup>
+  <ProjectReference Include="..\FareNexDriverApp.IOC\FareNexDriverApp.IOC.csproj" />
+  <ProjectReference Include="..\FareNexDriverApp.Rest\FareNexDriverApp.Rest.csproj" />
+</ItemGroup></Project>

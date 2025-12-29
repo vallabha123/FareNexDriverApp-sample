@@ -1,0 +1,1 @@
+namespace FareNexDriverApp.Core.Interfaces.Core; public interface ILogService<T>{ void LogMethodEntry(); void LogMethodExit(); void LogException(Exception ex); void LogInformation(string msg); }
