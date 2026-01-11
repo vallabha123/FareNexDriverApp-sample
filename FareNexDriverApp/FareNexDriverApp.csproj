@@ -7,6 +7,11 @@
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 	<ItemGroup>
+	  <PackageReference Include="CommunityToolkit.Maui" Version="9.0.2" />
+	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+	  <PackageReference Include="Microsoft.Extensions.Logging" Version="10.0.1" />
+	</ItemGroup>
+	<ItemGroup>
 		<ProjectReference Include="..\FareNexDriverApp.Core\FareNexDriverApp.Core.csproj" />
 		<ProjectReference Include="..\FareNexDriverApp.Rest\FareNexDriverApp.Rest.csproj" />
 		<ProjectReference Include="..\FareNexDriverApp.IOC\FareNexDriverApp.IOC.csproj" />

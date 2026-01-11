@@ -14,6 +14,12 @@ using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Net.Mail;
+using System.Threading.Tasks;
+using System.IO.Compression;
 
 namespace FareNexDriverApp.Rest.Services
 {
