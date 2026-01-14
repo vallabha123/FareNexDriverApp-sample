@@ -1,1 +1,30 @@
-<Shell xmlns='http://schemas.microsoft.com/dotnet/2021/maui' />
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="FareNexDriverApp.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:FareNexDriverApp.Views"
+    Shell.FlyoutBehavior="Disabled"
+    Shell.NavBarIsVisible="False"
+    Shell.TabBarIsVisible="False" >
+
+    <ShellContent
+        Title="Driver PIN"
+        ContentTemplate="{DataTemplate local:DriverPinPage}"
+        Route="DriverPinPage" />
+    <ShellContent
+     Title="Trip Selection"
+     ContentTemplate="{DataTemplate local:TripSelectionPage}"
+     Route="TripSelectionPage" />
+
+    <ShellContent
+     Title="Home Page"
+     ContentTemplate="{DataTemplate local:HomePage}"
+     Route="HomePage" />
+
+    <ShellContent
+     Title="End Trip"
+     ContentTemplate="{DataTemplate local:EndTripPage}"
+     Route="EndTripPage" />
+
+</Shell>

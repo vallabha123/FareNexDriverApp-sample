@@ -1,8 +1,19 @@
+﻿using FareNexDriverApp.Core.ViewModels;
 
-public partial class AppShell : Shell
+namespace FareNexDriverApp
 {
-    public AppShell()
+    public partial class AppShell : Shell
     {
-        InitializeComponent();
+        public AppShell(AppShellViewModel appShellViewModel)
+        {
+            InitializeComponent();
+            BindingContext = appShellViewModel;
+        }
+
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
+        }
     }
 }
+

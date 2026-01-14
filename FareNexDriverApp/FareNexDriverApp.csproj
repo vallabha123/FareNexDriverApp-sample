@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFrameworks>net9.0-android</TargetFrameworks>
 		<UseMaui>true</UseMaui>
@@ -15,5 +15,16 @@
 		<ProjectReference Include="..\FareNexDriverApp.Core\FareNexDriverApp.Core.csproj" />
 		<ProjectReference Include="..\FareNexDriverApp.Rest\FareNexDriverApp.Rest.csproj" />
 		<ProjectReference Include="..\FareNexDriverApp.IOC\FareNexDriverApp.IOC.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+	  <MauiXaml Update="App.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Resources\Styles\Colors.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Resources\Styles\Styles.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 </Project>
