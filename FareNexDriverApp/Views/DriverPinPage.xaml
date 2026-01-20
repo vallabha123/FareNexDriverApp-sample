@@ -1,1 +1,186 @@
-<pages:BasePage xmlns:pages='clr-namespace:FareNexDriverApp.Views.BasePages' xmlns='http://schemas.microsoft.com/dotnet/2021/maui'></pages:BasePage>
+<?xml version="1.0" encoding="utf-8" ?>
+<pages:BasePage
+    x:Class="FareNexDriverApp.Views.DriverPinPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pages="clr-namespace:FareNexDriverApp.Views.BasePages"
+    xmlns:resx="clr-namespace:FareNexDriverApp.Resources.Strings"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:version="clr-namespace:Microsoft.Maui.ApplicationModel;assembly=Microsoft.Maui.Essentials"
+    xmlns:viewModels="clr-namespace:FareNexDriverApp.Core.ViewModels;assembly=FareNexDriverApp.Core"
+    xmlns:views="clr-namespace:FareNexDriverApp.Views.CommonViews"
+    x:DataType="viewModels:DriverPinPageViewModel"
+    BackgroundColor="{StaticResource PageBGColor}"
+    HideSoftInputOnTapped="True">
+
+    <Grid
+        Margin="20,0,20,0"
+        ColumnDefinitions="40*,Auto,60*"
+        RowDefinitions="*">
+
+        <!-- Logo -->
+        <Image
+            Grid.Column="0"
+            Aspect="AspectFit"
+            AutomationId="LogoImage"
+            HeightRequest="160"
+            HorizontalOptions="Center"
+            Source="express_shuttle_logo.png"
+            VerticalOptions="Center"
+            WidthRequest="260" />
+
+        <!-- Divider -->
+        <BoxView
+            Grid.Column="1"
+            BackgroundColor="{StaticResource FN_Silver}"
+            HeightRequest="540"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            WidthRequest="3" />
+
+        <!-- PIN Entry -->
+        <Grid
+            Grid.Column="2"
+            Margin="80,0"
+            HorizontalOptions="Center"
+            RowDefinitions="Auto,Auto,Auto,Auto,Auto"
+            VerticalOptions="Center">
+
+            <Label
+                Grid.Row="0"
+                Margin="20,0"
+                HorizontalOptions="Start"
+                Style="{StaticResource BoldGray450BodyLabelStyle}"
+                Text="{x:Static resx:AppResources.EnterPin}"
+                VerticalOptions="Center" />
+
+            <!-- PIN BOX -->
+            <Border
+                Grid.Row="1"
+                Margin="20,5"
+                BackgroundColor="White"
+                HeightRequest="110"
+                StrokeThickness="2"
+                WidthRequest="450">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="16" />
+                </Border.StrokeShape>
+
+                <Border.Triggers>
+                    <DataTrigger
+                        Binding="{Binding IsError}"
+                        TargetType="Border"
+                        Value="True">
+                        <Setter Property="BackgroundColor"
+                                Value="{StaticResource FN_LightRed}" />
+                        <Setter Property="Stroke"
+                                Value="{StaticResource FN_Red}" />
+                    </DataTrigger>
+                </Border.Triggers>
+
+                <Grid ColumnDefinitions="*,*,*">
+
+                    <Entry
+                        x:Name="pinEntry"
+                        Grid.Row="2"
+                        Grid.ColumnSpan="3"
+                        Margin="16,0,6,0"
+                        CharacterSpacing="50"
+                        FontAttributes="Bold"
+                        FontSize="30"
+                        Keyboard="Numeric"
+                        MaxLength="4"
+                        Text="{Binding Pin, Mode=TwoWay}"
+                        TextChanged="PinEntry_TextChanged"
+                        VerticalOptions="Center">
+
+                        <Entry.Behaviors>
+                            <toolkit:EventToCommandBehavior
+                                BindingContext="{Binding Path=BindingContext, Source={x:Reference basePage}}"
+                                Command="{Binding PinTextChangedCommand}"
+                                EventName="TextChanged" />
+                        </Entry.Behaviors>
+
+                    </Entry>
+
+                    <BoxView
+                        Grid.Column="0"
+                        Margin="80,0,0,0"
+                        HeightRequest="50"
+                        Style="{StaticResource BoxView}"
+                        VerticalOptions="Center"
+                        WidthRequest="3" />
+
+                    <BoxView
+                        Grid.Column="1"
+                        Margin="10,0,20,0"
+                        HeightRequest="50"
+                        Style="{StaticResource BoxView}"
+                        VerticalOptions="Center"
+                        WidthRequest="3" />
+
+                    <BoxView
+                        Grid.Column="2"
+                        Margin="0,0,90,0"
+                        HeightRequest="50"
+                        Style="{StaticResource BoxView}"
+                        VerticalOptions="Center"
+                        WidthRequest="3" />
+
+                </Grid>
+            </Border>
+
+            <!-- Error Message -->
+            <Label
+                Grid.Row="3"
+                Margin="22,0,0,0"
+                HorizontalOptions="Start"
+                IsVisible="{Binding IsError}"
+                Style="{StaticResource MediumBodyRedLabelStyle}"
+                Text="{Binding Message}"
+                VerticalTextAlignment="Center" />
+
+            <!-- Next Button -->
+            <Button
+                x:Name="NextButton"
+                Grid.Row="4"
+                Grid.Column="2"
+                Margin="0,30"
+                AutomationId="NextButton"
+                Command="{Binding LoginCommand}"
+                IsEnabled="False"
+                Style="{StaticResource OkButtonStyle}"
+                Text="{x:Static resx:AppResources.Next}"
+                VerticalOptions="End"
+                WidthRequest="450">
+
+                <Button.Triggers>
+                    <DataTrigger
+                        Binding="{Binding Source={x:Reference pinEntry}, Path=Text.Length}"
+                        TargetType="Button"
+                        Value="4">
+                        <Setter Property="IsEnabled" Value="True" />
+                    </DataTrigger>
+                </Button.Triggers>
+
+            </Button>
+
+        </Grid>
+
+        <!-- Internet status -->
+        <views:InternetView
+            Grid.ColumnSpan="3"
+            Margin="-21,0,-20,0" />
+
+        <!-- App version -->
+        <Label
+            Margin="0,0,0,0"
+            HorizontalOptions="Start"
+            Style="{StaticResource MediumBodyThinBlackLabelStyle}"
+            Text="{x:Static version:AppInfo.VersionString}"
+            TextColor="{StaticResource FN_Silver}"
+            VerticalOptions="End" />
+
+    </Grid>
+</pages:BasePage>

@@ -437,4 +437,129 @@
         <Setter Property="SelectedTabColor" Value="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray200}}" />
     </Style>
 
+    <!-- Font Family -->
+    <x:String x:Key="FontFamilyRegular">MontserratRegular</x:String>
+    <x:String x:Key="FontFamilyMedium">MontserratMedium</x:String>
+    <x:String x:Key="FontFamilySemiBold">MontserratSemiBold</x:String>
+    <x:String x:Key="FontFamilyBold">MontserratBold</x:String>
+
+    <!-- Font Size -->
+    <x:Double x:Key="FontSizeH1">40</x:Double>
+    <x:Double x:Key="FontSizeH2">36</x:Double>
+    <x:Double x:Key="FontSizeH3">32</x:Double>
+    <x:Double x:Key="FontSizeH4">28</x:Double>
+    <x:Double x:Key="FontSizeH5">26</x:Double>
+    <x:Double x:Key="FontSizeH6">24</x:Double>
+    <x:Double x:Key="FontSizeH7">22</x:Double>
+    <x:Double x:Key="FontSizeBody">20</x:Double>
+    <x:Double x:Key="FontSizeCaption">18</x:Double>
+    <x:Double x:Key="FontSizeSmall">16</x:Double>
+
+
+    <!-- Label Styles -->
+    <Style x:Key="MediumGray450H6LabelStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource FontSizeH6}" />
+        <Setter Property="FontFamily" Value="{StaticResource FontFamilyMedium}" />
+        <Setter Property="TextColor" Value="{StaticResource FN_Gray450}" />
+    </Style>
+
+    <Style x:Key="SemiBoldDarkGrayH3LabelStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource FontSizeH3}" />
+        <Setter Property="FontFamily" Value="{StaticResource FontFamilySemiBold}" />
+        <Setter Property="TextColor" Value="{StaticResource FN_DarkGray}" />
+    </Style>
+
+    <Style x:Key="SemiBoldDarkGrayH7LabelStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource FontSizeH7}" />
+        <Setter Property="FontFamily" Value="{StaticResource FontFamilySemiBold}" />
+        <Setter Property="TextColor" Value="{StaticResource FN_DarkGray}" />
+    </Style>
+
+    <Style x:Key="SemiBoldDarkGraySmallLabelStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource FontSizeSmall}" />
+        <Setter Property="FontFamily" Value="{StaticResource FontFamilySemiBold}" />
+        <Setter Property="TextColor" Value="{StaticResource FN_DarkGray}" />
+    </Style>
+
+    <!-- Button -->
+    <Style x:Key="OkButtonStyle" TargetType="Button">
+        <Setter Property="TextColor" Value="{StaticResource FN_White}" />
+        <Setter Property="BackgroundColor" Value="{StaticResource FN_Orange}" />
+        <Setter Property="CornerRadius" Value="10" />
+    </Style>
+
+    <Style x:Key="OkButtonStyle" TargetType="Button">
+        <Setter Property="TextColor" Value="{StaticResource FN_White}" />
+        <Setter Property="BackgroundColor" Value="{StaticResource FN_Orange}" />
+        <Setter Property="FontFamily" Value="{StaticResource FontFamilySemiBold}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSizeH5}" />
+        <Setter Property="BorderWidth" Value="0" />
+        <Setter Property="CornerRadius" Value="12" />
+        <Setter Property="HeightRequest" Value="80" />
+        <Setter Property="WidthRequest" Value="400" />
+
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup x:Name="CommonStates">
+
+                    <VisualState x:Name="Normal">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor"
+                                Value="{StaticResource FN_Orange}" />
+                        </VisualState.Setters>
+                    </VisualState>
+
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor"
+                                Value="{StaticResource FN_Gray450}" />
+                        </VisualState.Setters>
+                    </VisualState>
+
+                    <VisualState x:Name="Pressed">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor"
+                                Value="{StaticResource FN_Brown}" />
+                        </VisualState.Setters>
+                    </VisualState>
+
+                    <VisualState x:Name="PointerOver" />
+
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+
+
+    <Style x:Key="CancelButtonStyle" TargetType="Button">
+        <Setter Property="TextColor" Value="{StaticResource FN_DarkGray}" />
+        <Setter Property="BackgroundColor" Value="{StaticResource FN_White}" />
+        <Setter Property="FontFamily" Value="{StaticResource FontFamilyMedium}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSizeH6}" />
+        <Setter Property="BorderWidth" Value="2" />
+        <Setter Property="BorderColor" Value="{StaticResource FN_Silver}" />
+        <Setter Property="CornerRadius" Value="12" />
+        <Setter Property="HeightRequest" Value="80" />
+        <Setter Property="WidthRequest" Value="400" />
+    </Style>
+
+
+    <Style x:Key="BoldGray450BodyLabelStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource FN_Gray450}" />
+        <Setter Property="FontFamily" Value="{StaticResource FontFamilyBold}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSizeBody}" />
+    </Style>
+
+
+    <Style x:Key="MediumRedH6LabelStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource FN_Orange}" />
+        <Setter Property="FontFamily" Value="{StaticResource FontFamilyMedium}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSizeH6}" />
+    </Style>
+
+    <Style x:Key="BoldRedH3LabelStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource FN_Orange}" />
+        <Setter Property="FontFamily" Value="{StaticResource FontFamilyMedium}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSizeH3}" />
+    </Style>
 </ResourceDictionary>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<popup:BasePopup
+    x:Class="FareNexDriverApp.Views.PopupViews.LoadingPopupView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:popup="clr-namespace:FareNexDriverApp.Views"
+    CanBeDismissedByTappingOutsideOfPopup="False"
+    VerticalOptions="Fill">
+
+    <Grid
+        Margin="0"
+        Padding="0"
+        BackgroundColor="Transparent"
+        ColumnDefinitions="*"
+        RowDefinitions="*"
+        HorizontalOptions="Fill"
+        VerticalOptions="Fill">
+
+        <Image
+            x:Name="loadingImg"
+            Source="loading_icon.png"
+            HorizontalOptions="Center"
+            VerticalOptions="Center" />
+
+    </Grid>
+
+</popup:BasePopup>

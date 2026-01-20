@@ -1,0 +1,91 @@
+
+    <?xml version="1.0" encoding="utf-8" ?>
+    <popup:BasePopup
+    x:Class="FareNexDriverApp.Views.PopupViews.AlertPopupView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:popup="clr-namespace:FareNexDriverApp.Views"
+    xmlns:Model="clr-namespace:FareNexDriverApp.Core.Models.CustomModels;assembly=FareNexDriverApp.Core"
+    x:DataType="Model:AlertPopupModel"
+    CanBeDismissedByTappingOutsideOfPopup="False"
+    HorizontalOptions="Center"
+    VerticalOptions="Fill">
+
+        <Grid ColumnDefinitions="*" RowDefinitions="*">
+
+            <Border
+            Margin="0,80,0,0"
+            BackgroundColor="{StaticResource FN_LightRed}"
+            HeightRequest="280"
+            WidthRequest="500"
+            HorizontalOptions="Center"
+            VerticalOptions="Start"
+            StrokeThickness="2">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="16" />
+                </Border.StrokeShape>
+
+                <Grid
+                ColumnDefinitions="Auto,Auto,*,*"
+                RowDefinitions="Auto,*,Auto"
+                HeightRequest="280"
+                WidthRequest="500">
+
+                    <!-- Left red strip -->
+                    <BoxView
+                    Grid.RowSpan="3"
+                    Grid.Column="0"
+                    BackgroundColor="{StaticResource FN_DarkRed}"
+                    WidthRequest="15"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Fill" />
+
+                    <!-- Icon -->
+                    <Image
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Margin="30"
+                    HeightRequest="45"
+                    WidthRequest="45"
+                    Source="error_icon.png"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Start" />
+
+                    <!-- Title -->
+                    <Label
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    Grid.ColumnSpan="2"
+                    Margin="0,35,0,0"
+                    Style="{StaticResource BoldDarkGrayH6LabelStyle}"
+                    Text="{Binding Title}"
+                    HorizontalOptions="Start" />
+
+                    <!-- Description -->
+                    <Label
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="3"
+                    Margin="30,0,30,0"
+                    Style="{StaticResource MediumBodyBlackLabelStyle}"
+                    Text="{Binding Description}"
+                    VerticalOptions="Start" />
+
+                    <!-- Dismiss button -->
+                    <Button
+                    Grid.Row="2"
+                    Grid.Column="3"
+                    Margin="0,0,40,30"
+                    Text="Dismiss"
+                    WidthRequest="120"
+                    HorizontalOptions="End"
+                    VerticalOptions="End"
+                    Style="{StaticResource DismissButtonStyle}"
+                    TextColor="{StaticResource FN_Red}"
+                    Clicked="DismissButton_Clicked" />
+
+                </Grid>
+            </Border>
+        </Grid>
+    </popup:BasePopup>

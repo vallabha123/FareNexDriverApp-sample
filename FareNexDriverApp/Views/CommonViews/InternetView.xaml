@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="FareNexDriverApp.Views.CommonViews.InternetView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:model="clr-namespace:FareNexDriverApp.Core.Models.CustomModels;assembly=FareNexDriverApp.Core"
+    xmlns:resx="clr-namespace:FareNexDriverApp.Resources.Strings"
+    xmlns:viewModels="clr-namespace:FareNexDriverApp.Core.ViewModels.BaseViewModels;assembly=FareNexDriverApp.Core"
+    x:DataType="viewModels:BaseNavigationViewModel"
+    HeightRequest="70"
+    IsVisible="{Binding IsNetworkToastVisible}"
+    VerticalOptions="Start">
+
+    <Grid
+        Padding="0,15,0,15"
+        BackgroundColor="{StaticResource FN_DarkRed}"
+        ColumnDefinitions="*"
+        HorizontalOptions="Fill"
+        RowDefinitions="*"
+        VerticalOptions="Fill">
+
+        <!-- Background change -->
+        <Grid.Triggers>
+            <DataTrigger
+                Binding="{Binding IsNetworkAvailable}"
+                TargetType="Grid"
+                Value="true">
+                <Setter
+                    Property="BackgroundColor"
+                    Value="{StaticResource FN_Green}" />
+            </DataTrigger>
+        </Grid.Triggers>
+
+        <StackLayout
+            HorizontalOptions="Center"
+            Orientation="Horizontal"
+            VerticalOptions="Center">
+
+            <!-- Icon -->
+            <Image
+                x:Name="StatusIcon"
+                HeightRequest="40"
+                WidthRequest="40"
+                Source="no_wifi_icon.png">
+
+                <Image.Triggers>
+                    <DataTrigger
+                        Binding="{Binding IsNetworkAvailable}"
+                        TargetType="Image"
+                        Value="true">
+                        <Setter
+                            Property="Source"
+                            Value="wifi_icon.png" />
+                    </DataTrigger>
+                </Image.Triggers>
+
+            </Image>
+
+            <!-- Text -->
+            <Label
+                x:Name="StatusLabel"
+                Margin="15,0,0,0"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                Style="{StaticResource BoldWhiteH5LabelStyle}"
+                Text="{x:Static resx:AppResources.InternetOffline}"
+                TextColor="{StaticResource FN_White}"
+                VerticalOptions="Center"
+                VerticalTextAlignment="Center">
+
+                <Label.Triggers>
+                    <DataTrigger
+                        Binding="{Binding IsNetworkAvailable}"
+                        TargetType="Label"
+                        Value="true">
+                        <Setter
+                            Property="Text"
+                            Value="{x:Static resx:AppResources.InternetOnline}" />
+                    </DataTrigger>
+                </Label.Triggers>
+
+            </Label>
+
+        </StackLayout>
+
+    </Grid>
+
+</ContentView>

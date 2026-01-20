@@ -42,4 +42,37 @@
     <SolidColorBrush x:Key="Gray600Brush" Color="{StaticResource Gray600}"/>
     <SolidColorBrush x:Key="Gray900Brush" Color="{StaticResource Gray900}"/>
     <SolidColorBrush x:Key="Gray950Brush" Color="{StaticResource Gray950}"/>
+
+
+    <!-- App Colors -->
+    <Color x:Key="FN_PrimaryColor">#F26923</Color>
+    <Color x:Key="PageBGColor">#ECF0F8</Color>
+
+    <Color x:Key="FN_White">#FFFFFF</Color>
+    <Color x:Key="FN_SoftWhite">#E8E8E8</Color>
+    <Color x:Key="FN_Lavender">#FFF2F2</Color>
+    <Color x:Key="FN_Beige">#F2FFF3</Color>
+    <Color x:Key="FN_Black">#000000</Color>
+
+    <Color x:Key="FN_DarkOliveGreen">#4F936E</Color>
+    <Color x:Key="FN_DarkSlateGray">#668465</Color>
+    <Color x:Key="FN_Crimson">#E14C4C</Color>
+    <Color x:Key="FN_LimeGreen">#00AE17</Color>
+
+    <Color x:Key="FN_Gray50">#C5D5C5</Color>
+    <Color x:Key="FN_Gray450">#5B5D6B</Color>
+    <Color x:Key="FN_Gray500">#505950</Color>
+    <Color x:Key="FN_DarkGray">#35363D</Color>
+    <Color x:Key="FN_Silver">#B3B5BD</Color>
+
+    <Color x:Key="FN_Orange">#C85100</Color>
+    <Color x:Key="FN_Brown">#7B3202</Color>
+    <Color x:Key="FN_AliceBlue">#EBEDF6</Color>
+    <Color x:Key="FN_Blue">#5564A1</Color>
+    <Color x:Key="FN_LightBlue">#6198DA</Color>
+
+    <Color x:Key="FN_LightRed">#FFF3F3</Color>
+    <Color x:Key="FN_Red">#B01B3F</Color>
+    <Color x:Key="FN_ThinRed">#B3261E</Color>
+    <Color x:Key="FN_DarkRed">#C50028</Color>
 </ResourceDictionary>

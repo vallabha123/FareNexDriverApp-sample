@@ -1,1 +1,263 @@
-<pages:BasePage xmlns:pages='clr-namespace:FareNexDriverApp.Views.BasePages' xmlns='http://schemas.microsoft.com/dotnet/2021/maui'></pages:BasePage>
+<?xml version="1.0" encoding="utf-8" ?>
+<pages:BasePage
+    x:Class="FareNexDriverApp.Views.HomePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:commonViews="clr-namespace:FareNexDriverApp.Views.CommonViews"
+    xmlns:pages="clr-namespace:FareNexDriverApp.Views.BasePages"
+    xmlns:resx="clr-namespace:FareNexDriverApp.Resources.Strings"
+    xmlns:views="clr-namespace:FareNexDriverApp.Views.CommonViews"
+    xmlns:viewModels="clr-namespace:FareNexDriverApp.Core.ViewModels;assembly=FareNexDriverApp.Core"
+    x:DataType="viewModels:HomePageViewModel">
+
+    <!-- ===================== RESOURCES ===================== -->
+    <pages:BasePage.Resources>
+
+        <DataTemplate x:Key="paymentsListTemplate">
+            <commonViews:PaymentsListViewTemplate />
+        </DataTemplate>
+
+        <DataTemplate x:Key="paymentsListFailedTemplate">
+            <commonViews:PaymentsListViewFailedTemplate />
+        </DataTemplate>
+
+        <commonViews:TransactionDataTemplateSelector
+            x:Key="transactionDataTemplateSelector"
+            FailedDataTemplate="{StaticResource paymentsListFailedTemplate}"
+            SuccessDataTemplate="{StaticResource paymentsListTemplate}" />
+
+    </pages:BasePage.Resources>
+
+    <!-- ===================== MAIN GRID ===================== -->
+    <Grid
+        Margin="0"
+        ColumnDefinitions="437,1,*"
+        ColumnSpacing="0"
+        RowDefinitions="111,73,*,105">
+
+        <!-- ===================== HEADER ===================== -->
+        <StackLayout
+            Grid.ColumnSpan="3"
+            Padding="0,15,30,15"
+            BackgroundColor="{StaticResource FN_White}">
+
+            <Label
+                HorizontalOptions="End"
+                Style="{StaticResource BoldBlueH4LabelStyle}"
+                Text="{Binding SelectedRouteName}">
+
+                <Label.Triggers>
+                    <DataTrigger
+                        Binding="{Binding IsLocalFare}"
+                        TargetType="Label"
+                        Value="true">
+                        <Setter Property="TextColor" Value="{StaticResource FN_LightBlue}" />
+                    </DataTrigger>
+                </Label.Triggers>
+
+            </Label>
+
+            <Label
+                HorizontalOptions="End"
+                Style="{StaticResource MediumBlackH6LabelStyle}"
+                Text="{Binding CurrentDateTime}" />
+
+        </StackLayout>
+
+        <!-- ===================== LOGO ===================== -->
+        <Image
+            Margin="26,20,0,15"
+            HeightRequest="70"
+            WidthRequest="140"
+            HorizontalOptions="Start"
+            VerticalOptions="Center"
+            Source="express_shuttle_logo.png" />
+
+        <!-- ===================== PASSENGER HEADER ===================== -->
+        <Grid
+            Grid.Row="1"
+            Grid.Column="0"
+            Padding="26,0,0,0"
+            BackgroundColor="{StaticResource FN_DarkOliveGreen}"
+            ColumnDefinitions="Auto,*"
+            ColumnSpacing="10">
+
+            <Label
+                HorizontalOptions="Start"
+                Style="{StaticResource MediumWhiteH5LabelStyle}"
+                Text="{x:Static resx:AppResources.TotalPassengersBoarded}"
+                VerticalOptions="Center" />
+
+            <Label
+                Grid.Column="1"
+                HorizontalOptions="Start"
+                Style="{StaticResource BoldWhiteH5LabelStyle}"
+                Text="{Binding TotalPassengersCount}"
+                VerticalOptions="Center" />
+        </Grid>
+
+        <!-- ===================== FRONT TICKETS ===================== -->
+        <Grid
+            Grid.Row="1"
+            Grid.Column="2"
+            Padding="24,0,0,0"
+            BackgroundColor="{StaticResource FN_DarkSlateGray}"
+            ColumnDefinitions="Auto,*"
+            ColumnSpacing="10">
+
+            <Label
+                HorizontalOptions="Start"
+                IsVisible="{Binding IsFrontBackHeadersVisible}"
+                Style="{StaticResource MediumWhiteH5LabelStyle}"
+                Text="{x:Static resx:AppResources.Front}"
+                VerticalOptions="Center" />
+
+            <Label
+                Grid.Column="1"
+                IsVisible="{Binding IsFrontBackHeadersVisible}"
+                Style="{StaticResource BoldWhiteH5LabelStyle}"
+                Text="{Binding TotalFrontTickets}"
+                VerticalOptions="Center" />
+        </Grid>
+
+        <!-- ===================== BACK TICKETS ===================== -->
+        <Grid
+            Grid.Row="1"
+            Grid.Column="4"
+            Padding="24,0,0,0"
+            BackgroundColor="{StaticResource FN_DarkSlateGray}"
+            ColumnDefinitions="Auto,*"
+            ColumnSpacing="10">
+
+            <Label
+                HorizontalOptions="Start"
+                IsVisible="{Binding IsFrontBackHeadersVisible}"
+                Style="{StaticResource MediumWhiteH5LabelStyle}"
+                Text="{x:Static resx:AppResources.Back}"
+                VerticalOptions="Center" />
+
+            <Label
+                Grid.Column="1"
+                IsVisible="{Binding IsFrontBackHeadersVisible}"
+                Style="{StaticResource BoldWhiteH5LabelStyle}"
+                Text="{Binding TotalBackTickets}"
+                VerticalOptions="Center" />
+        </Grid>
+
+        <!-- ===================== PASSENGER COUNTERS ===================== -->
+        <Grid
+            Grid.Row="2"
+            Grid.RowSpan="2"
+            Grid.Column="0"
+            BackgroundColor="{StaticResource FN_SoftWhite}"
+            RowDefinitions="Auto,Auto,Auto"
+            VerticalOptions="Start">
+
+            <commonViews:PassengerCounterView
+                Grid.Row="0"
+                Margin="26,20,22,20"
+                BindingContext="{Binding PassengerModels.TotalPassengers}" />
+
+            <commonViews:PassengerCounterView
+                Grid.Row="1"
+                Margin="26,0,22,20"
+                BindingContext="{Binding PassengerModels.LastEntryCounts}" />
+
+            <commonViews:PassengerCounterView
+                Grid.Row="2"
+                Margin="26,0,22,0"
+                BindingContext="{Binding PassengerModels.LastExitCounts}" />
+        </Grid>
+
+        <!-- ===================== PAYMENTS LIST ===================== -->
+        <Grid
+            Grid.Row="2"
+            Grid.Column="2"
+            Padding="0,10,7,0"
+            BackgroundColor="{StaticResource FN_White}"
+            ColumnDefinitions="*"
+            RowDefinitions="400">
+
+            <CollectionView
+                x:Name="paymentsCollectionView"
+                BackgroundColor="{StaticResource FN_White}"
+                HeightRequest="400"
+                EmptyView=""
+               ItemTemplate="{StaticResource transactionDataTemplateSelector}"
+    ItemsSource="{Binding PaymentsList}"
+    SelectionMode="None"
+    VerticalScrollBarVisibility="Always">
+
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout
+            ItemSpacing="5"
+            Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.EmptyViewTemplate>
+                    <DataTemplate>
+                        <Grid
+                HorizontalOptions="Center"
+                RowDefinitions="Auto,Auto,Auto"
+                VerticalOptions="Center">
+
+                            <Image
+                    Grid.Row="0"
+                    Margin="0,18"
+                    HeightRequest="64"
+                    WidthRequest="114"
+                    HorizontalOptions="Center"
+                    VerticalOptions="End"
+                    Source="ticket.png" />
+
+                            <Label
+                    Grid.Row="1"
+                    Margin="0,18"
+                    HorizontalOptions="Center"
+                    Style="{StaticResource BoldGrayH6LabelStyle}"
+                    Text="{x:Static resx:AppResources.TicketTransactionHeaderText}"
+                    VerticalOptions="End" />
+
+                            <Label
+                    Grid.Row="2"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    LineBreakMode="WordWrap"
+                    Style="{StaticResource MediumBodyThinBlackLabelStyle}"
+                    Text="{x:Static resx:AppResources.TicketTransactionDescriptionText}"
+                    VerticalOptions="End" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.EmptyViewTemplate>
+
+            </CollectionView>
+
+            <!-- END RIDE BUTTON -->
+            <Grid
+    Grid.Row="3"
+    Grid.Column="2"
+    BackgroundColor="{StaticResource FN_White}">
+
+                <Button
+        Margin="24,0,24,0"
+        BackgroundColor="{StaticResource FN_Orange}"
+        Command="{Binding GotoEndRideCommand}"
+        HeightRequest="70"
+        HorizontalOptions="Fill"
+        Style="{StaticResource OkButtonStyle}"
+        Text="End Ride"
+        VerticalOptions="Center"
+        WidthRequest="-1" />
+            </Grid>
+
+            <!-- INTERNET STATUS VIEW -->
+            <views:InternetView HeightRequest="110" />
+
+            <!-- TOAST ALERT -->
+            <commonViews:ToastAlertView
+    Grid.RowSpan="2"
+    Grid.ColumnSpan="3"
+    IsVisible="{Binding IsSseConnectionUnavailable}" />
+        </Grid>
+    </Grid>
+</pages:BasePage>
