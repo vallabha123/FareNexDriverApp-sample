@@ -169,54 +169,25 @@ namespace FareNexDriverApp
                             ColorStateList.ValueOf(Android.Graphics.Color.Transparent);
 #endif
                     });
-            });
-
-            return builder;
-        }
-
-        #endregion
-        #region Configure Handlers
-
-        private static MauiAppBuilder ConfigureHandlers(this MauiAppBuilder builder)
-        {
-            builder.ConfigureMauiHandlers((handlers) =>
-            {
-                Microsoft.Maui.Handlers.PickerHandler.Mapper.AppendToMapping(
-                    "NoUnderline",
-                    (handler, view) =>
-                    {
-#if ANDROID
-                        handler.PlatformView.Background = null;
-#endif
-                    });
-
-                Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping(
-                    "EntryNoUnderline",
-                    (handler, view) =>
-                    {
-#if ANDROID
-                        handler.PlatformView.BackgroundTintList =
-                            ColorStateList.ValueOf(Android.Graphics.Color.Transparent);
-#endif
-                    });
 
                 Microsoft.Maui.Handlers.ButtonHandler.Mapper.AppendToMapping(
-                    "NoRippleButton",
-                    (handler, view) =>
-                    {
+                  "NoRippleButton",
+                  (handler, view) =>
+                  {
 #if ANDROID
-                        if (handler.PlatformView.Background is RippleDrawable rippleDrawable)
-                        {
-                            rippleDrawable.SetTintList(null);
-                        }
+                      if (handler.PlatformView.Background is RippleDrawable rippleDrawable)
+                      {
+                          rippleDrawable.SetTintList(null);
+                      }
 #endif
-                    });
+                  });
             });
 
             return builder;
         }
 
         #endregion
+       
 
     }
 }

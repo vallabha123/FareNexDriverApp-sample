@@ -1,12 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace FareNexDriverApp.Core.Utilities
 {
-    internal class Enumeration
+    public enum ConfigurationKeys
     {
+        [Display(Description = "Serilog Log File Name")]
+        SerilogLogFileName,
+
+        ApiBaseUrl,
+        LoginApi,
+        StartTripApi,
+        HMACSecretKey,
+        EndTripApi,
+        SseEvents,
+        LogUploadApi,
+        LogUploadKey
+    }
+
+    public enum ErrorDisplayType
+    {
+        Inline,
+        Popup,
+        Banner
+    }
+
+    /// <summary>
+    /// Represents type of Passenger.
+    /// </summary>
+    public enum PassengerType
+    {
+        Adult,
+        Child,
+        SeniorCitizen
     }
 }

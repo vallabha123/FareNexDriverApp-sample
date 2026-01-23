@@ -7,14 +7,29 @@
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 	<ItemGroup>
+	  <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="9.0.0" />
 	  <PackageReference Include="CommunityToolkit.Maui" Version="9.0.2" />
 	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
 	  <PackageReference Include="Microsoft.Extensions.Logging" Version="10.0.1" />
+	  <PackageReference Include="Serilog.Extensions.Logging" Version="9.0.0" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\FareNexDriverApp.Core\FareNexDriverApp.Core.csproj" />
 		<ProjectReference Include="..\FareNexDriverApp.Rest\FareNexDriverApp.Rest.csproj" />
 		<ProjectReference Include="..\FareNexDriverApp.IOC\FareNexDriverApp.IOC.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Compile Update="Resources\Strings\AppResources.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>AppResources.resx</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+	<ItemGroup>
+	  <EmbeddedResource Update="Resources\Strings\AppResources.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Update="App.xaml">
